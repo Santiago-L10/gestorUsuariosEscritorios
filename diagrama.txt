@@ -1,0 +1,89 @@
+@startuml
+
+package "Entidades" {
+  class User {
+    +int Id
+    +string Nombre
+    +string Email
+    +string PasswordHash
+    +EstadoUsuario Estado
+    +DateTime FechaUltimoLogin
+    +DateTime FechaCreacion
+    +int RolId
+  }
+
+  enum EstadoUsuario {
+    Activo
+    Inactivo
+    Bloqueado
+  }
+
+  class Rol {
+    +int Id
+    +string NombreRol
+  }
+
+  class View {
+    +int Id
+    +string NombreView
+  }
+
+  class RoleViewAccess {
+    +int Id
+    +int RolId
+    +int ViewId
+  }
+
+  class Task {
+    +int Id
+    +string Titulo
+    +string Descripcion
+    +DateTime FechaAsignacion
+    +DateTime FechaLimite
+    +EstadoTarea EstadoTarea
+    +int UserId
+  }
+
+  enum EstadoTarea {
+    Pendiente
+    EnCurso
+    Completada
+    Vencida
+  }
+
+  class AuditLog {
+    +int Id
+    +int UserId
+    +string AccionRealizada
+    +DateTime FechaHora
+  }
+}
+
+package "Servicios" {
+  class UserService
+  class RoleService
+  class TaskService
+  class EmailService
+  class AppearanceService
+  class AuditService
+  class SchedulerService
+}
+
+User --> Rol : pertenece
+Rol --> RoleViewAccess : tiene
+View --> RoleViewAccess : permitido en
+User --> Task : asigna
+User --> AuditLog : genera
+
+UserService --> User
+RoleService --> Rol
+RoleService --> RoleViewAccess
+TaskService --> Task
+EmailService --> User
+EmailService --> Rol
+AppearanceService --> User
+AuditService --> AuditLog
+SchedulerService --> User
+SchedulerService --> Task
+
+@enduml
