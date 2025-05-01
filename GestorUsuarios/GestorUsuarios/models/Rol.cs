@@ -8,5 +8,7 @@ namespace GestorUsuarios.models
 {
     class Rol
     {
+        public int IdRol { get; set; }
+        public string NameRol { get; set; }
     }
 }

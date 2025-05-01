@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Estudiantes\\Source\\Repos\\gestorUsuariosEscritorios\\GestorUsuarios\\GestorUsuarios\\GestorUsuarios.csproj",
+      "projectUniqueName": "C:\\Users\\Estudiantes\\Documents\\gestionUsuarios\\gestorUsuariosEscritorios\\GestorUsuarios\\GestorUsuarios\\GestorUsuarios.csproj",
       "projectName": "GestorUsuarios",
-      "projectPath": "C:\\Users\\Estudiantes\\Source\\Repos\\gestorUsuariosEscritorios\\GestorUsuarios\\GestorUsuarios\\GestorUsuarios.csproj",
+      "projectPath": "C:\\Users\\Estudiantes\\Documents\\gestionUsuarios\\gestorUsuariosEscritorios\\GestorUsuarios\\GestorUsuarios\\GestorUsuarios.csproj",
       "packagesPath": "C:\\Users\\Estudiantes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Estudiantes\\Source\\Repos\\gestorUsuariosEscritorios\\GestorUsuarios\\GestorUsuarios\\obj\\",
+      "outputPath": "C:\\Users\\Estudiantes\\Documents\\gestionUsuarios\\gestorUsuariosEscritorios\\GestorUsuarios\\GestorUsuarios\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
