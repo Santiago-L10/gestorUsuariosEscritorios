@@ -17,9 +17,28 @@ namespace GestorUsuarios.models
         public bool Estado { get; set; }
         public DateTime FechaUltimoLogin { get; set; }
         public DateTime FechaCreacion { get; set; }
-
         public int RolId { get; set; }
         public Rol Rol { get; set; }
         public ICollection<TaskItem> Tareas { get; set; }
+    }
+    public User (int id, string nombre, string email, string passwordHash, int tiempoActividad, DateTime fechaCreacion, int rolId){
+        Id = id;
+        Nombre = nombre;
+        Email = email;
+        PasswordHash = passwordHash;
+        GestorDeEstado.TemporizadorUsuario(this, tiempoActividad);
+        FechaCreacion = fechaCreacion;
+        RolId = rolId;
+    }
+
+    public void CambioDeEstado(bool estado){
+        if(estado){
+            Estado = true;
+            Console.WriteLine("Usuario activo.");
+        }
+        else{
+            Estado = false;
+            Console.WriteLine("Usuario inactivo.");
+        }
     }
 }
