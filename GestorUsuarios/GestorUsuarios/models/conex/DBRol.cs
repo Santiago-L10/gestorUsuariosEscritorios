@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace GestorUsuarios.models.conex
 {
-    internal class DBPerson
+    internal class DBRol
     {
         string stringConex = "server=localhost; user=root; database=managerusers; password=; port=3306;";
 
-        public Person GetPerson(int id)
+        public Rol GetRol(int id)
         {
-            Person person = new Person();
-            string query = "Select * from Persons where id = " + id;
+            Rol rol = new Rol();
+            string query = "Select * from Roles where id = " + id;
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
             {
@@ -25,32 +25,26 @@ namespace GestorUsuarios.models.conex
                     {
                         while (reader.Read())
                         {
-                            person.IdPerson = reader.GetInt32("id");
-                            person.NamesPerson = reader.GetString("name");
-                            person.LastNamesPerson = reader.GetString("lastname");
-                            person.AgePerson = reader.GetInt32("age");
-                            person.EmailPerson = reader.GetString("email");
+                            rol.IdRol = reader.GetInt32("id");
+                            rol.NameRol = reader.GetString("name");
                         }
                     }
                 }
             }
 
-            return person;
+            return rol;
         }
 
-        public Boolean SetPerson(Person person)
+        public Boolean SetRol(Rol rol)
         {
 
-            string queryInsert = "INSERT INTO Persons (name, lastname, age, email) VALUES (@namesPerson, @lastNamesPerson, @agePerson, @emailPerson)";
+            string queryInsert = "INSERT INTO Roles (name) VALUES (@nameRol)";
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
             {
                 using (MySqlCommand command = new MySqlCommand(queryInsert, mySqlConnection))
                 {
-                    command.Parameters.AddWithValue("@namesPerson", person.NamesPerson);
-                    command.Parameters.AddWithValue("@lastNamesPerson", person.LastNamesPerson);
-                    command.Parameters.AddWithValue("@agePerson", person.AgePerson);
-                    command.Parameters.AddWithValue("@emailPerson", person.EmailPerson);
+                    command.Parameters.AddWithValue("@nameRol", rol.NameRol);
 
                     mySqlConnection.Open();
                     int result = command.ExecuteNonQuery();
@@ -64,9 +58,9 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean DeletePerson(int id)
+        public Boolean DeleteRol(int id)
         {
-            string queryDelete = "DELETE FROM Persons WHERE id = " + id;
+            string queryDelete = "DELETE FROM Roles WHERE id = " + id;
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
             {
@@ -83,19 +77,16 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean UpdatePerson(Person person)
+        public Boolean UpdateRol(Rol rol)
         {
-            string queryUpdate = "UPDATE Persons SET name = @namesPerson, lastname = @lastNamesPerson, age = @agePerson, email = @emailPerson WHERE id = @idPerson";
+            string queryUpdate = "UPDATE Roles SET name = @nameRol WHERE id = @idRol";
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
             {
                 using (MySqlCommand command = new MySqlCommand(queryUpdate, mySqlConnection))
                 {
-                    command.Parameters.AddWithValue("@namesPerson", person.NamesPerson);
-                    command.Parameters.AddWithValue("@lastNamesPerson", person.LastNamesPerson);
-                    command.Parameters.AddWithValue("@agePerson", person.AgePerson);
-                    command.Parameters.AddWithValue("@emailPerson", person.EmailPerson);
-                    command.Parameters.AddWithValue("@idPerson", person.IdPerson);
+                    command.Parameters.AddWithValue("@nameRol", rol.NameRol);
+                    command.Parameters.AddWithValue("@idRol", rol.IdRol);
 
                     mySqlConnection.Open();
                     int result = command.ExecuteNonQuery();
@@ -107,6 +98,5 @@ namespace GestorUsuarios.models.conex
                 return false;
             }
         }
-
     }
 }

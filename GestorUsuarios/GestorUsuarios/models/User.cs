@@ -11,8 +11,8 @@ namespace GestorUsuarios.models
     public enum EstadoTarea { Pendiente, EnCurso, Completada, Vencida }
     class User
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
+        public int IdUser { get; set; }
+        public string Nickname { get; set; }
         public string PasswordHash { get; set; }
         public bool Estado { get; set; }
         public DateTime? FechaUltimoLogin { get; set; }
@@ -20,6 +20,9 @@ namespace GestorUsuarios.models
         public int RolId { get; set; }
         public int PersonId { get; set; }
         public ICollection<TaskItem>? Tareas { get; set; }
+
+        public User() { }
+
     
     public User(int id, string nombre, string passwordHash, int tiempoActividad, DateTime fechaCreacion, int rolId) {
             Id = id;
