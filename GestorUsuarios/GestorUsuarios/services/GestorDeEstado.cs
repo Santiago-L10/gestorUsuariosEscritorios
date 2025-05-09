@@ -1,3 +1,4 @@
+using GestorUsuarios.models;
 using System;
 using System.Threading.Tasks;
 class GestorDeEstado
