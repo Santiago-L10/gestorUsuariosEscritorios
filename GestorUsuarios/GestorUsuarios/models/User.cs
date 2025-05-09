@@ -24,9 +24,9 @@ namespace GestorUsuarios.models
         public User() { }
 
     
-    public User(int id, string nombre, string passwordHash, int tiempoActividad, DateTime fechaCreacion, int rolId) {
-            Id = id;
-            Nombre = nombre;
+    public User(int id, string nickname, string passwordHash, int tiempoActividad, DateTime fechaCreacion, int rolId) {
+            IdUser = id;
+            Nickname = nickname;
             PasswordHash = passwordHash;
             GestorDeEstado.TemporizadorUsuario(this, tiempoActividad);
             FechaCreacion = fechaCreacion;
