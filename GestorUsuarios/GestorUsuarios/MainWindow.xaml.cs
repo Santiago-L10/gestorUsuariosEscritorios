@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GestorUsuarios.services;
 
 namespace GestorUsuarios
 {
@@ -19,6 +20,11 @@ namespace GestorUsuarios
         public MainWindow()
         {
             InitializeComponent();
+            SendEmails sendEmails = new SendEmails();
+            //sendEmails.addFilesToEmail();
+            sendEmails.addToDestination("juampi_03_33@hotmail.com");
+            sendEmails.contentEmail("prueba Subject","Prueba contenido <h1>Electrico</h1>", false);
+            sendEmails.sendEmail();
         }
     }
 }
