@@ -8,5 +8,14 @@
         public int AgePerson { get; set; }
         public string EmailPerson { get; set; }
 
+        public Person() { }
+        public Person(int idPerson, string namesPerson, string lastNamesPerson, int agePerson, string emailPerson)
+        {
+            IdPerson = idPerson;
+            NamesPerson = namesPerson;
+            LastNamesPerson = lastNamesPerson;
+            AgePerson = agePerson;
+            EmailPerson = emailPerson;
+        }
     }
 }

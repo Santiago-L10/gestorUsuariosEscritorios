@@ -11,25 +11,30 @@ namespace GestorUsuarios.services
     internal class SendEmails
     {
         private string emailAuthor = "pipejfdv@gmail.com";
-        private string password = "geyp tjyu fghx ";
+        private string password = "geyp tjyu fghx fxlf";
         private string alias = "EquipoTaller";
         private string[] files;
         private MailMessage email;
         public static List<string> listDestination = new List<string>();
+        public static readonly Dictionary<string, string> templayEmail = new Dictionary<string, string> {
+            {"registryTemplay", "plantillaRegistro.html" },
+            {"asiggnTaskTemplay", "plantillaTarea.html" },
+            {"updatePassword", "pantillaPassword.html" }
+        };
 
         public void addToDestination(string destination)
         {
             listDestination.Add(destination);
         }
-        public void contentEmail(string subject, bool priority, string nameRecipient, string textCustomized) {
+        public void contentEmail(string subject, bool priority, string nameRecipient, string textCustomized, string templayEmail) {
 
-            //string routeTemplate = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "templateEmails", "plantillaBasica.html");
-            string htmlContent = CargarPlantilla("s", nameRecipient, textCustomized);
+            string htmlContent = CargarPlantilla(templayEmail, nameRecipient, textCustomized);
             email = new MailMessage();
             email.From = new MailAddress(emailAuthor, alias, System.Text.Encoding.UTF8);
             for (int i = 0; i < listDestination.Count; i++) { 
                 email.To.Add(listDestination[i]);
             }
+            listDestination.Clear();
             email.Subject = subject;
             //cuerpo del correo 
             email.Body = htmlContent;
@@ -96,7 +101,7 @@ namespace GestorUsuarios.services
             //ruta del archivo
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string projectPath = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\")); // Retroceder hasta el nivel del proyecto
-            string newPath = Path.Combine(projectPath, "templateEmails", "plantillaBasica.html");
+            string newPath = Path.Combine(projectPath, "templateEmails", routeTemplate);
             string htmlContent = File.ReadAllText(newPath);
             //remplazar contenido
             htmlContent = htmlContent.
@@ -107,7 +112,7 @@ namespace GestorUsuarios.services
 
             /*sendEmails.addFilesToEmail();
             sendEmails.addToDestination("luisaecheverri91@outlook.com");
-            sendEmails.contentEmail("Registro exitoso", true, "Luisa", "Pasaba a decirte que te amo y que sueñes con los angelitos");
+            sendEmails.contentEmail("Registro exitoso", true, "Nombre de la persona", "texto del contenido del mensaje");
             sendEmails.sendEmail();*/
     }
 }

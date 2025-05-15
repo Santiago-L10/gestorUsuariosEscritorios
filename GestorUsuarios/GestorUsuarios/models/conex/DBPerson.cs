@@ -9,7 +9,7 @@ namespace GestorUsuarios.models.conex
 {
     internal class DBPerson
     {
-        string stringConex = "server=localhost; user=root; database=managerusers; password=; port=3306;";
+        string stringConex = "server=localhost; user=root; database=managerusers; password=; port=3307;";
 
         public Person GetPerson(int id)
         {
@@ -38,7 +38,7 @@ namespace GestorUsuarios.models.conex
             return person;
         }
 
-        public Boolean SetPerson(Person person)
+        public bool SetPerson(Person person)
         {
 
             string queryInsert = "INSERT INTO Persons (name, lastname, age, email) VALUES (@namesPerson, @lastNamesPerson, @agePerson, @emailPerson)";
@@ -64,7 +64,7 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean DeletePerson(int id)
+        public bool DeletePerson(int id)
         {
             string queryDelete = "DELETE FROM Persons WHERE id = " + id;
 
@@ -83,7 +83,7 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean UpdatePerson(Person person)
+        public bool UpdatePerson(Person person)
         {
             string queryUpdate = "UPDATE Persons SET name = @namesPerson, lastname = @lastNamesPerson, age = @agePerson, email = @emailPerson WHERE id = @idPerson";
 
