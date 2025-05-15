@@ -11,7 +11,7 @@ namespace GestorUsuarios.services
     internal class SendEmails
     {
         private string emailAuthor = "pipejfdv@gmail.com";
-        private string password = "geyp tjyu fghx fxlf";
+        private string password = "geyp tjyu fghx ";
         private string alias = "EquipoTaller";
         private string[] files;
         private MailMessage email;
@@ -111,7 +111,7 @@ namespace GestorUsuarios.services
         }
 
             /*sendEmails.addFilesToEmail();
-            sendEmails.addToDestination("luisaecheverri91@outlook.com");
+            sendEmails.addToDestination("correo destino");
             sendEmails.contentEmail("Registro exitoso", true, "Nombre de la persona", "texto del contenido del mensaje");
             sendEmails.sendEmail();*/
     }
