@@ -1,4 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="views\DatosUsuario.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\HomeAdmin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\HomerSuper.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\ListTask.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\TaskSuper.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

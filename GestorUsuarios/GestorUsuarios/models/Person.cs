@@ -9,9 +9,8 @@
         public string EmailPerson { get; set; }
 
         public Person() { }
-        public Person(int idPerson, string namesPerson, string lastNamesPerson, int agePerson, string emailPerson)
+        public Person(string namesPerson, string lastNamesPerson, int agePerson, string emailPerson)
         {
-            IdPerson = idPerson;
             NamesPerson = namesPerson;
             LastNamesPerson = lastNamesPerson;
             AgePerson = agePerson;

@@ -9,27 +9,34 @@ namespace GestorUsuarios.models.conex
 {
     internal class DBPerson
     {
-        string stringConex = "server=localhost; user=root; database=managerusers; password=; port=3307;";
+        string stringConex = "server=localhost; user=root; database=managerusers; password=; port=3306;";
 
-        public Person GetPerson(int id)
+        public Person GetPerson(int? id, string name = null)
         {
-            Person person = new Person();
-            string query = "Select * from Persons where id = " + id;
+            Person person = null;
+            string query = "SELECT * FROM Persons WHERE id = @id OR name = @name";
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
             {
                 using (MySqlCommand command = new MySqlCommand(query, mySqlConnection))
                 {
+                    // Agregar parámetros a la consulta
+                    command.Parameters.AddWithValue("@id", (object)id ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@name", (object)name ?? DBNull.Value);
+
                     mySqlConnection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read()) // Obtener solo el primer resultado encontrado
                         {
-                            person.IdPerson = reader.GetInt32("id");
-                            person.NamesPerson = reader.GetString("name");
-                            person.LastNamesPerson = reader.GetString("lastname");
-                            person.AgePerson = reader.GetInt32("age");
-                            person.EmailPerson = reader.GetString("email");
+                            person = new Person
+                            {
+                                IdPerson = reader.GetInt32("id"),
+                                NamesPerson = reader.GetString("name"),
+                                LastNamesPerson = reader.GetString("lastname"),
+                                AgePerson = reader.GetInt32("age"),
+                                EmailPerson = reader.GetString("email")
+                            };
                         }
                     }
                 }
@@ -37,6 +44,7 @@ namespace GestorUsuarios.models.conex
 
             return person;
         }
+
 
         public bool SetPerson(Person person)
         {

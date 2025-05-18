@@ -1,0 +1,43 @@
+﻿<Page x:Class="GestorUsuarios.views.DatosUsuario"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestorUsuarios.views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DatosUsuario">
+
+    <Grid Background="White">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350">
+            <TextBlock Text="Perfil de Usuario" FontSize="24" FontWeight="Bold" Margin="10" HorizontalAlignment="Center"/>
+
+            <!-- Nickname (Solo lectura) -->
+            <TextBlock Text="Nickname:" FontSize="14"/>
+            <TextBox Name="NicknameTextBox" Width="250" IsReadOnly="True" Background="LightGray"/>
+
+            <!-- Nombre -->
+            <TextBlock Text="Nombre:" FontSize="14"/>
+            <TextBox Name="NombreTextBox" Width="250"/>
+
+            <!-- Apellido -->
+            <TextBlock Text="Apellido:" FontSize="14"/>
+            <TextBox Name="ApellidoTextBox" Width="250"/>
+
+            <!-- Correo -->
+            <TextBlock Text="Correo:" FontSize="14"/>
+            <TextBox Name="CorreoTextBox" Width="250"/>
+
+            <!-- Edad -->
+            <TextBlock Text="Edad:" FontSize="14"/>
+            <TextBox Name="EdadTextBox" Width="250"/>
+
+            <!-- Contraseña -->
+            <TextBlock Text="Contraseña:" FontSize="14"/>
+            <PasswordBox Name="ContrasenaBox" Width="250"/>
+
+            <!-- Botón para actualizar datos -->
+            <Button Content="Actualizar Datos" Width="200" Margin="10" Click="UpdateInfoUser"/>
+        </StackPanel>
+    </Grid>
+</Page>

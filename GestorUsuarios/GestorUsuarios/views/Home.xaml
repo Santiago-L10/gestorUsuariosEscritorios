@@ -1,0 +1,39 @@
+﻿<Window x:Class="GestorUsuarios.views.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestorUsuarios.views"
+      mc:Ignorable="d" 
+      Title="Gestor de Usuarios"
+      Height="600" Width="1000">
+
+    <Grid Background="BurlyWood">
+        <!-- Contenedor Principal (más grande) -->
+        <Border Background="White" Padding="20" CornerRadius="10"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="800" Height="Auto">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Para los botones -->
+                    <RowDefinition Height="*"/>
+                    <!-- Para el contenido dinámico -->
+                </Grid.RowDefinitions>
+
+                <!-- Botones en la parte superior -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                    <Button Content="Lista de Tareas" Width="150" Height="50" Margin="5" Click="ListToTask"/>
+                    <Button Content="Datos personales" Width="150" Height="50" Margin="5" Click="dataUser"/>
+                    <Button Content="Cerrar Sesión" Width="150" Height="50" Margin="10"
+        HorizontalAlignment="Center" Click="CerrarSesion"/>
+
+                </StackPanel>
+
+                <!-- Contenedor para mostrar diferentes vistas -->
+                <Frame Grid.Row="1" Name="VistaFrame"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

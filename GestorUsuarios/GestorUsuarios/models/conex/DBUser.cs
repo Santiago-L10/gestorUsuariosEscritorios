@@ -11,28 +11,34 @@ namespace GestorUsuarios.models.conex
     {
         string stringConex = "server=localhost; user=root; database=managerusers; password=; port=3306;";
 
-        public User GetUser(int id)
+        public User GetUser(int? id, string nickname = null)
         {
-            User user = new User();
-            string query = "Select * from Users where id = " + id;
+            User user = null;
+            string query = "SELECT * FROM Users WHERE id = @id OR nickname = @nickname";
 
             using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
             {
                 using (MySqlCommand command = new MySqlCommand(query, mySqlConnection))
                 {
+                    command.Parameters.AddWithValue("@id", (object)id ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@nickname", (object)nickname ?? DBNull.Value);
+
                     mySqlConnection.Open();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read()) // Solo obtener el primer resultado
                         {
-                            user.IdUser = reader.GetInt32("id");
-                            user.Nickname = reader.GetString("nickname");
-                            user.PasswordHash = reader.GetString("password");
-                            user.RolId = reader.GetInt32("idRol");
-                            user.PersonId = reader.GetInt32("idPerson");
-                            user.Estado = reader.GetBoolean("estado");
-                            user.FechaUltimoLogin = reader.GetDateTime("LastLoginDate");
-                            user.FechaCreacion = reader.GetDateTime("CreationDate");
+                            user = new User
+                            {
+                                IdUser = reader.GetInt32("id"),
+                                Nickname = reader.GetString("nickname"),
+                                PasswordHash = reader.GetString("password"),
+                                RolId = reader.GetInt32("idRol"),
+                                PersonId = reader.GetInt32("idPerson"),
+                                Estado = reader.GetBoolean("estado"),
+                                FechaUltimoLogin = reader.GetDateTime("LastLoginDate"),
+                                FechaCreacion = reader.GetDateTime("CreationDate")
+                            };
                         }
                     }
                 }
@@ -41,7 +47,8 @@ namespace GestorUsuarios.models.conex
             return user;
         }
 
-        public Boolean SetUser(User user)
+
+        public bool SetUser(User user)
         {
 
             string queryInsert = "INSERT INTO Users (nickname, password, idRol, idPerson, estado, " +
@@ -72,7 +79,7 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean DeleteUser(int id)
+        public bool DeleteUser(int id)
         {
             string queryDelete = "DELETE FROM Users WHERE id = " + id;
 
@@ -91,7 +98,7 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean UpdateUser(User user)
+        public bool UpdateUser(User user)
         {
             string queryUpdate = "UPDATE Users SET nickname = @nicknameUser, password = @passwordUser, " +
                                  "idRol = @rolUser, idPerson = @personUser, estado = @estadoUser " +

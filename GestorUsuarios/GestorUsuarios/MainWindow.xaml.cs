@@ -1,16 +1,9 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using GestorUsuarios.controller;
 using GestorUsuarios.models;
 using GestorUsuarios.models.conex;
 using GestorUsuarios.services;
+using GestorUsuarios.views;
 
 namespace GestorUsuarios
 {
@@ -19,19 +12,46 @@ namespace GestorUsuarios
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
-            /*SendEmails sendEmails = new SendEmails();
+            /*
+             * ##INSERT INTO roles (id, name) VALUES (1, "Usuario");
+##INSERT INTO roles (id, name) VALUES (2, "Supervisor");
+INSERT INTO roles (id, name) VALUES (3, "Admin");
 
-            string plantilla = SendEmails.templayEmail["updatePassword"];
-            //sendEmails.addFilesToEmail();
-            sendEmails.addToDestination("pedroclemente2209@gmail.com");
-            sendEmails.contentEmail("Actualizar contraseña", true, "Felipe", "Es necesario que actualice la contraseña", plantilla);
-            //sendEmails.sendEmail();*/
-            DBPerson sd = new DBPerson();
-            Person person = new Person(1,"Felipe", "Delga", 26, "pi@gm.com");
-            sd.SetPerson(person);
+             * DBPerson dBPerson = new DBPerson();
+            DBUser dBUser = new DBUser();
+            Person person = new Person("Feliep", "delga", 26, "email");
+            User user = new User("pipejfdv", "1234", 10000, 1, 1, true, DateTime.Now, DateTime.Now);
+            dBPerson.SetPerson(person);
+            dBUser.SetUser(user);*/
+
         }
+        private void Home(object sender, RoutedEventArgs e)
+        {
+            DBUser dBUser = new DBUser();
+            DBPerson dBPerson = new DBPerson();
+            LoginServices loginServices = new LoginServices(new DBUser(), new DBPerson());
+            HomeController controller = new HomeController(loginServices);
+            string u = userText.Text;
+            string p = passBox.Password;
+            
+            if (u.Length == 0 || p.Length == 0)
+            {
+                MessageBox.Show("Campos vacios");
+            }
+            else
+            {
+                bool r = controller.acces(u, p);
+                if (r)
+                {
+                    this.Visibility = Visibility.Collapsed;
+                }
+            }
+                
+        }
+        
     }
 }

@@ -9,7 +9,7 @@ namespace GestorUsuarios.models
 {
     public enum EstadoUsuario { Activo, Inactivo, Bloqueado }
     public enum EstadoTarea { Pendiente, EnCurso, Completada, Vencida }
-    class User
+    public class User
     {
         public int IdUser { get; set; }
         public string Nickname { get; set; }
@@ -19,18 +19,20 @@ namespace GestorUsuarios.models
         public DateTime? FechaCreacion { get; set; }
         public int RolId { get; set; }
         public int PersonId { get; set; }
-        public ICollection<TaskItem>? Tareas { get; set; }
+        public ICollection<TaskModel>? Tareas { get; set; }
 
         public User() { }
 
-    
-    public User(int id, string nickname, string passwordHash, int tiempoActividad, DateTime fechaCreacion, int rolId) {
-            IdUser = id;
+        
+        public User(string nickname, string passwordHash, int tiempoActividad, int idRol, int idPerson, bool state, DateTime login, DateTime fechaCreacion) {
             Nickname = nickname;
             PasswordHash = passwordHash;
+            RolId = idRol;
+            PersonId = idPerson;
+            Estado = state;
             GestorDeEstado.TemporizadorUsuario(this, tiempoActividad);
+            FechaUltimoLogin = login;
             FechaCreacion = fechaCreacion;
-            RolId = rolId;
         }
 
         public void CambioDeEstado(bool estado) {
