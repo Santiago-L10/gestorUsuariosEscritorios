@@ -24,7 +24,9 @@
                     <!-- Botones en la parte superior -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                         <Button Content="Lista de Tareas" Width="150" Height="50" Margin="5" Click="ListToTask"/>
-                        <Button Content="Vista 2" Width="150" Height="50" Margin="5"/>
+                        <Button Content="Asignar tarea" Width="150" Height="50" Margin="5" Click="addTask"/>
+                        <Button Content="Cerrar Sesión" Width="150" Height="50" Margin="10"
+HorizontalAlignment="Center" Click="CerrarSesion"/>
                     </StackPanel>
 
                     <!-- Contenedor para mostrar diferentes vistas -->

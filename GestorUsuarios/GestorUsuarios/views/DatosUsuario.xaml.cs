@@ -33,8 +33,8 @@ namespace GestorUsuarios.views
         private void CargarDatosUsuario()
         {
 
-            LoginServices loginServices = new LoginServices(new DBUser(), new DBPerson());
-            HomeController controller = new HomeController(loginServices);
+            ServicesUsers loginServices = new ServicesUsers(new DBUser(), new DBPerson());
+            ControllerUser controller = new ControllerUser(loginServices);
             usuarioActual = SessionUser.currentUser; // Obtener el usuario en sesión
 
             Person person = controller.infoUser(usuarioActual.PersonId);
@@ -75,8 +75,8 @@ namespace GestorUsuarios.views
                 PasswordHash = ContrasenaBox.Password
             };
             
-            LoginServices loginServices = new LoginServices(new DBUser(), new DBPerson());
-            HomeController controller = new HomeController(loginServices);
+            ServicesUsers loginServices = new ServicesUsers(new DBUser(), new DBPerson());
+            ControllerUser controller = new ControllerUser(loginServices);
 
             bool r1 = controller.updateUser(person);
             bool r2 = controller.updateUserPassword(user);

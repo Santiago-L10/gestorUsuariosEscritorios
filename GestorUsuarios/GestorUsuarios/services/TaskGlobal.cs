@@ -11,10 +11,10 @@ namespace GestorUsuarios.services
         public static List<TaskModel> Tasks { get; set; } = new List<TaskModel>
         {
             
-            new TaskModel { Name = "Actualizar software", AssignedTo = "pipejfdv", Completed = false },
-            new TaskModel { Name = "software", AssignedTo = "pipejfdv", Completed = false },
-            new TaskModel { Name = "AAAaActualizar software", AssignedTo = "pipejfdv", Completed = false },
-            new TaskModel { Name = "Revisión de seguridad", AssignedTo = "Supervisor", Completed = false }
+            new TaskModel ("Actualizar software", "pipejfdv", false, "revisar versiones",DateTime.Now ),
+            new TaskModel("software", "pipejfdv", false,"framework por incorporar", DateTime.Now),
+            new TaskModel("AAAaActualizar software", "pipejfdv", false, "Prueba 1",DateTime.Now),
+            new TaskModel("Revisión de seguridad", "Supervisor", false, "Prueba 2", DateTime.Now)
         };
 
         public static void MarkTaskCompleted(string nameTask, string user)

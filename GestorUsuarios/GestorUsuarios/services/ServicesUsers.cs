@@ -6,11 +6,11 @@ using MySql.Data.MySqlClient;
 
 namespace GestorUsuarios.services
 {
-    internal class LoginServices
+    internal class ServicesUsers
     {
         public DBUser dbUser;
         public DBPerson dBPerson;
-        public LoginServices(DBUser userDatabase, DBPerson dBPerson)
+        public ServicesUsers(DBUser userDatabase, DBPerson dBPerson)
         {
             this.dbUser = userDatabase;
             this.dBPerson = dBPerson;
@@ -69,6 +69,11 @@ namespace GestorUsuarios.services
                 MessageBox.Show(e.Message);
                 return false;
             }
+        }
+
+        public List<User> listUsers()
+        {
+            return dbUser.listUsers();
         }
     }
 }

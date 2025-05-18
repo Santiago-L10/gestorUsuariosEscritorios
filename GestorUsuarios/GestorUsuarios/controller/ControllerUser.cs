@@ -5,10 +5,10 @@ using GestorUsuarios.views;
 
 namespace GestorUsuarios.controller
 {
-    internal class HomeController
+    internal class ControllerUser
     {
-        public LoginServices logServices;
-        public HomeController(LoginServices loginServices)
+        public ServicesUsers logServices;
+        public ControllerUser(ServicesUsers loginServices)
         {
             logServices = loginServices;
         }
@@ -54,6 +54,10 @@ namespace GestorUsuarios.controller
         public bool updateUserPassword(User user)
         {
             return logServices.updateUserPassword(user);
+        }
+        public List<User> GetListUser()
+        {
+            return logServices.listUsers();
         }
     }
 }

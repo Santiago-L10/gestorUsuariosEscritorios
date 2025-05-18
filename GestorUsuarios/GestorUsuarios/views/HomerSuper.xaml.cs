@@ -26,7 +26,31 @@ namespace GestorUsuarios.views
         }
         public void ListToTask(object sender, RoutedEventArgs e)
         {
-            VistaFrame.NavigationService.Navigate(new ListTask());
+            VistaFrame.NavigationService.Navigate(new TaskSuper());
+        }
+
+        public void addTask(object sender, RoutedEventArgs e) {
+            VistaFrame.NavigationService.Navigate(new AddTask());
+        }
+
+        public void CerrarSesion(object sender, RoutedEventArgs e)
+        {
+            this.Close(); // Cierra la ventana actual
+
+            // Encuentra la ventana principal ya existente
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is MainWindow main)
+                {
+                    main.Visibility = Visibility.Visible;
+                    main.Show(); // Asegura que se muestre correctamente
+                    return;
+                }
+            }
+
+            // Si no se encuentra una ventana abierta, crear una nueva
+            MainWindow nuevaMain = new MainWindow();
+            nuevaMain.Show();
         }
     }
 }

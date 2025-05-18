@@ -17,6 +17,7 @@ namespace GestorUsuarios
         {
             InitializeComponent();
             /*
+             * ALTER TABLE persons ADD COLUMN email VARCHAR(255);
              * ##INSERT INTO roles (id, name) VALUES (1, "Usuario");
 ##INSERT INTO roles (id, name) VALUES (2, "Supervisor");
 INSERT INTO roles (id, name) VALUES (3, "Admin");
@@ -27,14 +28,13 @@ INSERT INTO roles (id, name) VALUES (3, "Admin");
             User user = new User("pipejfdv", "1234", 10000, 1, 1, true, DateTime.Now, DateTime.Now);
             dBPerson.SetPerson(person);
             dBUser.SetUser(user);*/
-
         }
         private void Home(object sender, RoutedEventArgs e)
         {
             DBUser dBUser = new DBUser();
             DBPerson dBPerson = new DBPerson();
-            LoginServices loginServices = new LoginServices(new DBUser(), new DBPerson());
-            HomeController controller = new HomeController(loginServices);
+            ServicesUsers loginServices = new ServicesUsers(new DBUser(), new DBPerson());
+            ControllerUser controller = new ControllerUser(loginServices);
             string u = userText.Text;
             string p = passBox.Password;
             

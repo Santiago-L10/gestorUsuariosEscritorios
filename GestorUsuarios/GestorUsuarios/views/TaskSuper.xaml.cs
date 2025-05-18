@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using GestorUsuarios.services;
 
 namespace GestorUsuarios.views
@@ -11,6 +12,12 @@ namespace GestorUsuarios.views
         public TaskSuper()
         {
             InitializeComponent();
+            SupervisorGrid.ItemsSource = TaskGlobal.Tasks;
+
+        }
+        public void realoadList(object sender, RoutedEventArgs e)
+        {
+            SupervisorGrid.ItemsSource = null; // Limpia la referencia anterior
             SupervisorGrid.ItemsSource = TaskGlobal.Tasks;
         }
     }

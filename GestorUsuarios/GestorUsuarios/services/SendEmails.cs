@@ -11,15 +11,15 @@ namespace GestorUsuarios.services
     internal class SendEmails
     {
         private string emailAuthor = "pipejfdv@gmail.com";
-        private string password = "geyp tjyu fghx ";
+        private string password = "geyp tjyu fghx fxlf";
         private string alias = "EquipoTaller";
         private string[] files;
         private MailMessage email;
         public static List<string> listDestination = new List<string>();
-        public static readonly Dictionary<string, string> templayEmail = new Dictionary<string, string> {
-            {"registryTemplay", "plantillaRegistro.html" },
-            {"asiggnTaskTemplay", "plantillaTarea.html" },
-            {"updatePassword", "pantillaPassword.html" }
+        public static Dictionary<string, string> templayEmail = new Dictionary<string, string> {
+            {"Registro", "plantillaRegistro.html" },
+            {"Asignar Tarea", "plantillaTarea.html" },
+            {"Actualizar contraseña", "pantillaPassword.html" }
         };
 
         public void addToDestination(string destination)

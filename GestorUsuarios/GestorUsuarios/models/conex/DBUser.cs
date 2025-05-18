@@ -47,6 +47,36 @@ namespace GestorUsuarios.models.conex
             return user;
         }
 
+        public List<User> listUsers()
+        {
+            List<User> users = new List<User>();
+            User user = null;
+            string query = "SELECT *  FROM users";
+            using (MySqlConnection connection = new MySqlConnection(stringConex))
+            {
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read()) {
+                            user = new User {
+                                IdUser = reader.GetInt32("id"),
+                                Nickname = reader.GetString("nickname"),
+                                PasswordHash = reader.GetString("password"),
+                                RolId = reader.GetInt32("idRol"),
+                                PersonId = reader.GetInt32("idPerson"),
+                                Estado = reader.GetBoolean("estado"),
+                                FechaUltimoLogin = reader.GetDateTime("LastLoginDate"),
+                                FechaCreacion = reader.GetDateTime("CreationDate")
+                            };
+                            users.Add(user);
+                        }
+                    }
+                }
+            }
+            return users;
+        }
 
         public bool SetUser(User user)
         {

@@ -16,14 +16,19 @@
 
             <!-- Tabla de tareas -->
             <DataGrid Name="SupervisorGrid" AutoGenerateColumns="False" Height="300"
-                      SelectionMode="Single" CanUserAddRows="False" ItemsSource="{Binding TaskGlobal.Tasks}">
+                      SelectionMode="Single" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre de Tarea" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Usuario Asignado" Binding="{Binding AssignedTo}"/>
                     <DataGridTextColumn Header="Estado de Tarea" Binding="{Binding Completed}"/>
-                    <DataGridTextColumn Header="Fecha Finalización" Binding="{Binding CompletedAt, StringFormat='dd/MM/yyyy HH:mm'}"/>
+                    <DataGridTextColumn Header="Fecha Finalización" Binding="{Binding CompletedTime, StringFormat='dd/MM/yyyy HH:mm'}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+
+        <!-- Botón de actualización en la parte inferior derecha -->
+        <Button Content="Actualizar Lista" Width="150" Height="50"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"
+                Click="realoadList"/>
     </Grid>
 </Page>
