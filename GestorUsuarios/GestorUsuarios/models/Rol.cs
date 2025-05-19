@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GestorUsuarios.models
+﻿namespace GestorUsuarios.models
 {
-    class Rol
+    public class Rol
     {
-        public int IdRol { get; set; }
-        public string NameRol { get; set; }
+        public string Nombre { get; set; }
+
+        public Rol(string nombre)
+        {
+            Nombre = nombre;
+        }
     }
 }

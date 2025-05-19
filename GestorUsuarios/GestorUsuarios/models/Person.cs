@@ -6,7 +6,7 @@
         public string NamesPerson { get; set; }
         public string LastNamesPerson { get; set; }
         public int AgePerson { get; set; }
-        public string EmailPerson { get; set; }
+        public string emailPerson { get; set; }
 
         public Person() { }
         public Person(int idPerson, string namesPerson, string lastNamesPerson, int agePerson, string emailPerson)

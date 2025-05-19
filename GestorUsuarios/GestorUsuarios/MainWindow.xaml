@@ -6,7 +6,105 @@
         xmlns:local="clr-namespace:GestorUsuarios"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15500*"/>
+            <ColumnDefinition Width="393*"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid x:Name="VistaAdmin" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <DataGrid x:Name="UsuariosDataGrid"
+                      Grid.Row="0"
+                      AutoGenerateColumns="False"
+                      Margin="10"
+                      FontSize="14"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                    <DataGridCheckBoxColumn Header="Estado" Binding="{Binding Estado}" />
+                    <DataGridTextColumn Header="Último ingreso" Binding="{Binding FechaUltimoLogin}" />
+                    <DataGridTextColumn Header="Creado" Binding="{Binding FechaCreacion}" />
+                    <DataGridTextColumn Header="Rol" Binding="{Binding RolNombre}" />
+                    <DataGridTemplateColumn Header="Acciones">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Content="Editar"
+                                            Click="EditarUsuario_Click"
+                                            Padding="5"
+                                            Margin="0,0,5,0"
+                                            Tag="{Binding Id}" Width="60"/>
+                                    <Button Content="Eliminar"
+                                            Click="EliminarUsuario_Click"
+                                            Padding="5"
+                                            Tag="{Binding Id}" Width="60"
+                                            Background="#F44336" Foreground="White"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10">
+                <Button Content="Registrar nuevo usuario"
+                        Width="180" Height="35"
+                        Background="#4CAF50"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="RegistrarUsuario_Click"
+                        Margin="0,0,10,0"/>
+                <Button Content="Cerrar sesión"
+                        Width="120" Height="35"
+                        Background="#F44336"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="CerrarSesion_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="VistaUsuario" Visibility="Collapsed">
+            <Border Background="White"
+                    BorderBrush="#ccc"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="300">
+                <StackPanel>
+                    <TextBlock x:Name="BienvenidaTextBlock"
+                               Text="Bienvenido usuario"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Margin="0,0,0,10"
+                               TextAlignment="Center"/>
+
+                    <TextBlock Text="Aquí podrías mostrar tu información personal, tareas, etc."
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,20"
+                               TextAlignment="Center"/>
+
+                    <Button Content="Cerrar sesión"
+                            Width="150"
+                            Height="35"
+                            Background="#F44336"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Click="CerrarSesion_Click"
+                            HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
