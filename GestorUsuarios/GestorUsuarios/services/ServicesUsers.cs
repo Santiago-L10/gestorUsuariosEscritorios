@@ -66,7 +66,7 @@ namespace GestorUsuarios.services
             }
         }
 
-        public bool updateUserPassword(User user)
+        public bool updateUser(User user)
         {
             try
             {

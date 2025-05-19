@@ -29,5 +29,8 @@
     <Compile Update="views\TaskSuper.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="views\UpdateUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -56,9 +56,9 @@ namespace GestorUsuarios.controller
             return logServices.updateUser(person);
         }
 
-        public bool updateUserPassword(User user)
+        public bool updateUser(User user)
         {
-            return logServices.updateUserPassword(user);
+            return logServices.updateUser(user);
         }
         public List<User> GetListUser()
         {

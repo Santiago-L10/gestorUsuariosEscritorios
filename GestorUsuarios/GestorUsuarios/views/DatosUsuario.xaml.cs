@@ -79,7 +79,7 @@ namespace GestorUsuarios.views
             ControllerUser controller = new ControllerUser(loginServices);
 
             bool r1 = controller.updateUser(person);
-            bool r2 = controller.updateUserPassword(user);
+            bool r2 = controller.updateUser(user);
 
             if (r1 && r2)
             {
