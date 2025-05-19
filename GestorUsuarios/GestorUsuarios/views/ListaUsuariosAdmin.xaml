@@ -1,0 +1,39 @@
+﻿<Page x:Class="GestorUsuarios.views.ListaUsuariosAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestorUsuarios.views"
+      mc:Ignorable="d"
+      Title="ListaUsuariosAdmin" Height="441" Width="993">
+
+    <Grid>
+        <!-- Tabla de usuarios -->
+        <DataGrid Name="GridUsers" AutoGenerateColumns="False" Height="400"
+                  SelectionMode="Single" CanUserAddRows="False" Margin="0,25,0,25" HorizontalAlignment="Left" Width="958">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="80"/>
+                <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}" Width="150"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="150"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
+                <DataGridTextColumn Header="Edad" Binding="{Binding Edad}" Width="80"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100"/>
+
+                
+
+                
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- ComboBox y Botón agregados al final -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,331,0,0" Width="381" RenderTransformOrigin="0.507,0.596">
+            <ComboBox x:Name="FiltroComboBox" Width="200" Margin="5" Height="30">
+                
+            </ComboBox>
+
+            <Button Content="Filtrar" Width="100" Margin="5" Click="SelectUsuario" Height="32"/>
+            <Button Content="Borrar" Width="80" Click="EliminarUsuario_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

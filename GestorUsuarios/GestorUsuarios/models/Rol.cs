@@ -2,11 +2,15 @@
 {
     public class Rol
     {
-        public string Nombre { get; set; }
+        public int IdRol { get; set; }
+        public string NameRol { get; set; }
 
-        public Rol(string nombre)
+        public Rol() { }
+        public Rol (string name)
         {
-            Nombre = nombre;
+            this.NameRol = name;
         }
     }
+
+
 }

@@ -1,0 +1,27 @@
+﻿<Window x:Class="GestorUsuarios.views.HomeAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorUsuarios.views"
+        mc:Ignorable="d"
+        Title="HomeAdmin" Height="550" Width="1000"
+        Background="Gray">
+
+    <Grid>
+        <!-- Contenedor principal -->
+        <StackPanel Orientation="Vertical">
+
+            <!-- Botonera superior -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Lista de Usuarios" Width="150" Margin="5" Click="OpenUserList"/>
+                <Button Content="Agregar Usuario" Width="150" Margin="5" Click="AddUser"/>
+                <Button Content="Cerrar Sesión" Width="150" Margin="5" Click="CerrarSesion"/>
+            </StackPanel>
+
+            <!-- Frame para cargar vistas -->
+            <Frame Name="MainFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

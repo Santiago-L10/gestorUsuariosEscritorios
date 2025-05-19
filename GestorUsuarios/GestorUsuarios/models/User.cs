@@ -21,6 +21,11 @@ namespace GestorUsuarios.models
         public string PasswordHash { get; set; }
         public bool Estado { get; set; }
         public int RolId { get; set; }
+        public int PersonId { get; set; }
+        public ICollection<TaskModel>? Tareas { get; set; }
+
+        public User() { }
+
         public Rol Rol { get; set; }
         public string RolNombre
         {
@@ -38,15 +43,16 @@ namespace GestorUsuarios.models
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaUltimoLogin { get; set; }
 
-        public User(int id, string nombre, string email, string passwordHash, int tiempoActividad, DateTime fechaCreacion, int rolId)
-        {
-            Id = id;
-            Nombre = nombre;
-            Email = email;
+        
+        public User(string nickname, string passwordHash, int tiempoActividad, int idRol, int idPerson, bool state, DateTime login, DateTime fechaCreacion) {
+            Nickname = nickname;
             PasswordHash = passwordHash;
+            RolId = idRol;
+            PersonId = idPerson;
+            Estado = state;
             GestorDeEstado.TemporizadorUsuario(this, tiempoActividad);
+            FechaUltimoLogin = login;
             FechaCreacion = fechaCreacion;
-            RolId = rolId;
         }
 
         public void CambioDeEstado(bool estado)

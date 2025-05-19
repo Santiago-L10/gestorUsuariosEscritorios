@@ -2,6 +2,38 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="views\AddTask.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\AddUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\DatosUsuario.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\HomeAdmin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\HomerSuper.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\ListaUsuariosAdmin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\ListTask.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\TaskSuper.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="views\UpdateUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="EditarUsuarioWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
