@@ -17,6 +17,9 @@
     <Compile Update="views\Home.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="views\ListaUsuariosAdmin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="views\ListTask.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

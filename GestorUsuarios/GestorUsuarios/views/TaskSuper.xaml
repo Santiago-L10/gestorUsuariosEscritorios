@@ -22,6 +22,8 @@
                     <DataGridTextColumn Header="Usuario Asignado" Binding="{Binding AssignedTo}"/>
                     <DataGridTextColumn Header="Estado de Tarea" Binding="{Binding Completed}"/>
                     <DataGridTextColumn Header="Fecha Finalización" Binding="{Binding CompletedTime, StringFormat='dd/MM/yyyy HH:mm'}"/>
+                    <DataGridTextColumn Header="Especificaciones" Binding="{Binding Specifications}"/>
+                    <!-- Nueva columna -->
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

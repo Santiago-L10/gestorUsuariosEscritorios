@@ -59,5 +59,9 @@ namespace GestorUsuarios.controller
         {
             return logServices.listUsers();
         }
+        public User GetUser(int? idUser, string nickname = null)
+        {
+            return logServices.GetUser(idUser, nickname);
+        }
     }
 }

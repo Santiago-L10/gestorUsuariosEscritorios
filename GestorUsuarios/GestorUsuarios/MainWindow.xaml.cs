@@ -22,10 +22,13 @@ namespace GestorUsuarios
 ##INSERT INTO roles (id, name) VALUES (2, "Supervisor");
 INSERT INTO roles (id, name) VALUES (3, "Admin");
 
-             * DBPerson dBPerson = new DBPerson();
+            DBPerson dBPerson = new DBPerson();
             DBUser dBUser = new DBUser();
-            Person person = new Person("Feliep", "delga", 26, "email");
-            User user = new User("pipejfdv", "1234", 10000, 1, 1, true, DateTime.Now, DateTime.Now);
+            ControllerUser controllerUser = new ControllerUser(new ServicesUsers(new DBUser(), new DBPerson()));
+            
+            Person person = new Person("Luisa", "Echeveri", 25, "juampi_03_33@hotmail.com");
+            
+            User user = new User("Lu", "1234", 10000, 3, 4, true, DateTime.Now, DateTime.Now);
             dBPerson.SetPerson(person);
             dBUser.SetUser(user);*/
         }
@@ -52,6 +55,26 @@ INSERT INTO roles (id, name) VALUES (3, "Admin");
             }
                 
         }
-        
+
+        private void RecoveryData(object sender, RoutedEventArgs e)
+        {
+            string userRecovery = userText.Text;
+            if(userRecovery.Length == 0)
+            {
+                MessageBox.Show("Ingresa tu usuario");
+                return;
+            }
+            ControllerUser controllerUser = new ControllerUser(new ServicesUsers(new DBUser(), new DBPerson()));
+            SendEmails sendEmails = new SendEmails();
+            User user = controllerUser.GetUser(null, userRecovery);
+            Person person = controllerUser.infoUser(user.PersonId);
+            
+            sendEmails.addToDestination("juampi_03_33@hotmail.com");
+            sendEmails.contentEmail("Recuperación de credenciales", true, "Admin", $"Solicita recuperación de credenciales\nusuario: {person.NamesPerson}", SendEmails.templayEmail["Actualizar contraseña"]);
+            sendEmails.sendEmail();
+            MessageBox.Show("Solicitud generada");
+        }
+
+
     }
 }

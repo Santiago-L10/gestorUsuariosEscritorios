@@ -21,6 +21,7 @@
                     <DataGridTextColumn Header="Nombre de Tarea" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Estado de Tarea" Binding="{Binding Completed}"/>
                     <DataGridCheckBoxColumn Header="Completar tarea" Binding="{Binding Completed}"/>
+                    <DataGridTextColumn Header="Especificaciones" Binding="{Binding Specifications}"/>
                 </DataGrid.Columns>
             </DataGrid>
 

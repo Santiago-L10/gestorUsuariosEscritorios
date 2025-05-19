@@ -1,0 +1,25 @@
+﻿<Page x:Class="GestorUsuarios.views.ListaUsuariosAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestorUsuarios.views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListaUsuariosAdmin">
+
+    <Grid>
+        <!-- Tabla de usuarios -->
+        <DataGrid Name="GridUsers" AutoGenerateColumns="False" Height="400"
+                  SelectionMode="Single" CanUserAddRows="False" HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Edad" Binding="{Binding Edad}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

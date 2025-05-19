@@ -39,6 +39,11 @@ namespace GestorUsuarios.services
             return false;
         }
 
+        public User GetUser(int? idUser, string nickname = null)
+        {
+            return dbUser.GetUser(idUser, nickname);
+        }
+
         public Person dataUSer(int idPerson)
         {
             return dBPerson.GetPerson(idPerson);

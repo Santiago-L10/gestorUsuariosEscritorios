@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GestorUsuarios.controller;
+using GestorUsuarios.models;
+using GestorUsuarios.models.conex;
+using GestorUsuarios.services;
 
 namespace GestorUsuarios.views
 {
@@ -22,6 +26,33 @@ namespace GestorUsuarios.views
         public HomeAdmin()
         {
             InitializeComponent();
+            MainFrame.NavigationService.Navigate(new ListaUsuariosAdmin());
+        }
+
+        private void OpenUserList(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new ListaUsuariosAdmin());
+        }
+
+
+        public void CerrarSesion(object sender, RoutedEventArgs e)
+        {
+            this.Close(); // Cierra la ventana actual
+
+            // Encuentra la ventana principal ya existente
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is MainWindow main)
+                {
+                    main.Visibility = Visibility.Visible;
+                    main.Show(); // Asegura que se muestre correctamente
+                    return;
+                }
+            }
+
+            // Si no se encuentra una ventana abierta, crear una nueva
+            MainWindow nuevaMain = new MainWindow();
+            nuevaMain.Show();
         }
     }
 }
