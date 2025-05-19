@@ -34,6 +34,10 @@ namespace GestorUsuarios.views
             MainFrame.NavigationService.Navigate(new ListaUsuariosAdmin());
         }
 
+        private void AddUser(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new AddUser());
+        }
 
         public void CerrarSesion(object sender, RoutedEventArgs e)
         {

@@ -23,12 +23,16 @@ namespace GestorUsuarios.services
                 User user = dbUser.GetUser(null, nickname);
                 if (user != null)
                 {
-                    if (user.PasswordHash == password)
-                    {
-                        SessionUser.Login(user);
-                        return true;
+                    if (user.Estado) {
+                        if (user.PasswordHash == password)
+                        {
+                            SessionUser.Login(user);
+                            return true;
+                        }
+                        MessageBox.Show("Credenciales incorrectas");
+                        return false;
                     }
-                    MessageBox.Show("Credenciales incorrectas");
+                    MessageBox.Show("Usuario inactivo\nSolicita recuperar credenciales");
                     return false;
                 }
             }
@@ -79,6 +83,10 @@ namespace GestorUsuarios.services
         public List<User> listUsers()
         {
             return dbUser.listUsers();
+        }
+
+        public void AddUser(User user) { 
+            dbUser.SetUser(user);
         }
     }
 }

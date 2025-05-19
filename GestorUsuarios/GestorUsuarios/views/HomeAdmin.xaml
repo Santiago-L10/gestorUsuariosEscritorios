@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorUsuarios.views"
         mc:Ignorable="d"
-        Title="HomeAdmin" Height="450" Width="800"
+        Title="HomeAdmin" Height="550" Width="800"
         Background="Gray">
 
     <Grid>
@@ -15,7 +15,7 @@
             <!-- Botonera superior -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <Button Content="Lista de Usuarios" Width="150" Margin="5" Click="OpenUserList"/>
-                <Button Content="Agregar Usuario" Width="150" Margin="5" />
+                <Button Content="Agregar Usuario" Width="150" Margin="5" Click="AddUser"/>
                 <Button Content="Activar Usuario" Width="150" Margin="5" />
                 <Button Content="Modificar Usuario" Width="150" Margin="5" />
                 <Button Content="Cerrar Sesión" Width="150" Margin="5" Click="CerrarSesion"/>

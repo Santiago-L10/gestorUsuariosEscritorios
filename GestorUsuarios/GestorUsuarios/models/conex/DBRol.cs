@@ -35,7 +35,31 @@ namespace GestorUsuarios.models.conex
             return rol;
         }
 
-        public Boolean SetRol(Rol rol)
+        public List<Rol> GetListRols()
+        {
+            List<Rol> listRols = new List<Rol>();
+            string query = "Select * from roles";
+            using (MySqlConnection mySqlConnection = new MySqlConnection(stringConex))
+            {
+                using (MySqlCommand command = new MySqlCommand(query, mySqlConnection))
+                {
+                    mySqlConnection.Open();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Rol rol = new Rol();
+                            rol.IdRol = reader.GetInt32("id");
+                            rol.NameRol = reader.GetString("name");
+                            listRols.Add(rol);
+                        }
+                    }
+                }
+            }
+            return listRols;
+        }
+
+        public bool SetRol(Rol rol)
         {
 
             string queryInsert = "INSERT INTO Roles (name) VALUES (@nameRol)";
@@ -58,7 +82,7 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean DeleteRol(int id)
+        public bool DeleteRol(int id)
         {
             string queryDelete = "DELETE FROM Roles WHERE id = " + id;
 
@@ -77,7 +101,7 @@ namespace GestorUsuarios.models.conex
             return false;
         }
 
-        public Boolean UpdateRol(Rol rol)
+        public bool UpdateRol(Rol rol)
         {
             string queryUpdate = "UPDATE Roles SET name = @nameRol WHERE id = @idRol";
 

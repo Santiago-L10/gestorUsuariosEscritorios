@@ -25,5 +25,9 @@ namespace GestorUsuarios.controller
         {
             return servicesPersons.ListUsers();
         }
+        public void AddPerson(Person person)
+        {
+            servicesPersons.AddPerson(person);
+        }
     }
 }

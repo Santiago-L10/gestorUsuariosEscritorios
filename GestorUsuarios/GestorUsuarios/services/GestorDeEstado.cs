@@ -1,6 +1,7 @@
 using GestorUsuarios.models;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 class GestorDeEstado
 {
     public static async void TemporizadorUsuario(User user, int tiempo){

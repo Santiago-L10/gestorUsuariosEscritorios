@@ -24,5 +24,10 @@ namespace GestorUsuarios.services
         {
             return dBPerson.listUsers();
         }
+
+        public void AddPerson(Person person)
+        {
+            dBPerson.SetPerson(person);
+        }
     }
 }

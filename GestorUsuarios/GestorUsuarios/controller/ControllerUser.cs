@@ -41,6 +41,11 @@ namespace GestorUsuarios.controller
             }
         }
 
+        public void AddUserController(User user)
+        {
+            logServices.AddUser(user);
+        }
+
         public Person infoUser(int idPerson)
         {
             return logServices.dataUSer(idPerson);
